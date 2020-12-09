@@ -5,6 +5,10 @@ from sqlalchemy import create_engine, func
 
 from flask import Flask, jsonify
 
+######
+# the scope of the project changed to only do routes for quotes and top10tags
+######
+
 
 #################################################
 # Database Setup
@@ -53,7 +57,7 @@ def quotes():
     inner join author a on q.author_name = a.name
     order by id''')
     total_quotes = data.rowcount
-    result['total'] = total_quotes
+    result['total'] = total_quotes #for some reason this total is showing up after the quotes, even though i want it at the top
 
     quotes = []
     for row in data:
